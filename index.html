@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRESHERS WELCOME 26/27 | Official Site</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="site-preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">WELCOME 26/27<span class="star">🎓</span></div>
+            <div class="preloader-title">WAITING_FOR_SYSTEM_DATA...</div>
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill"></div>
+        </div>
+    </div>
+
+    <header class="navbar">
+        <img src="C:\Users\HP\Downloads\technology-logo.png" height="100px" alt="Vice City Streets" class="pan-img">
+        
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+
+        <nav class="nav-menu">
+            <a href="#" class="nav-link">Games</a>
+            <a href="#" class="nav-link">Videos</a>
+            <a href="#" class="nav-link">Newswire</a>
+            <a href="#" class="nav-link">Store</a>
+            <a href="#" class="btn-nav">Sign In</a>
+        </nav>
+    </header>
+
+    <main class="hero-section">
+        <div class="video-overlay-bg">
+            <video autoplay muted loop playsinline class="bg-video">
+                <source src="C:\Users\HP\Downloads\Video Project.mp4" type="video/mp4">
+            </video>
+            <div class="video-vignette"></div>
+        </div>
+
+        <div class="hero-container">
+            <div class="hero-badge">WELCOME FRESHERS'</div>
+            <h1 class="hero-title">BATCH X</h1>
+            <p class="hero-tagline"><br>Faculty of Technology</br><br>University Of Colombo.</br></p>
+            
+            <div class="cta-group">
+                <a href="https://youtu.be/JWR86EscQos?si=nXyJZhCUYlkiAhgK" target="_blank" class="btn-primary">Intro Video</a>
+            </div>
+            <div class="scroll-arrow">⬇️</div>
+        </div>
+    </main>
+
+    <section class="photo-chain-section">
+        
+        <div class="scroll-container-item">
+            <div class="scroll-img-wrapper">
+                <img src="C:\Users\HP\Downloads\CSB9958-scaled.jpg" alt="ICT Department" class="scroll-zoom-img">
+                <div class="scroll-overlay"></div>
+            </div>
+            <div class="scroll-content-card float-left">
+                <span class="card-meta">Department of</span>
+                <h2 class="card-title">Information & Communication Technology</h2>
+                <p class="card-desc"><br><bold>The Digital Infrastructure of Tomorrow, Today.</br><br>Your ultimate guide to understanding networks, hardware, and the future of Communication Technology.</br></p>
+            </div>
+        </div>
+
+        <div class="scroll-container-item">
+            <div class="scroll-img-wrapper">
+                <img src="C:\Users\HP\Downloads\ULTIMATE_EDITION_ELECTRIC_FANG_04.0p0qga4w7y5yl.jpg" alt="Vice Beach Art" class="scroll-zoom-img">
+                <div class="scroll-overlay"></div>
+            </div>
+            <div class="scroll-content-card float-right">
+                <span class="card-meta">Department of</span>
+                <h2 class="card-title">Agricultural Technology</h2>
+                <p class="card-desc">From white-sand coastal beaches to dark rural waterways, exploration runs deeper than ever before.</p>
+            </div>
+        </div>
+		
+		<div class="scroll-container-item">
+            <div class="scroll-img-wrapper">
+                <img src="https://media-rockstargames-com.akamaized.net/mfe6/prod/__common/img/93416b9b30ea92787fc5e3f42c365313.jpg" alt="Vice City Streets" class="scroll-zoom-img">
+                <div class="scroll-overlay"></div>
+            </div>
+            <div class="scroll-content-card float-left">
+                <span class="card-meta">Leonida State</span>
+                <h2 class="card-title">Vice City Underworld</h2>
+                <p class="card-desc">Experience the neon-soaked, high-stakes streets through a deeply immersive narrative landscape.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('site-preloader');
+            setTimeout(() => {
+                preloader.classList.add('preloader-hidden');
+            }, 1000);
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrollItems = document.querySelectorAll('.scroll-container-item');
+            
+            scrollItems.forEach(item => {
+                const img = item.querySelector('.scroll-zoom-img');
+                const content = item.querySelector('.scroll-content-card');
+                
+                const rect = item.getBoundingClientRect();
+                const viewHeight = window.innerHeight;
+                
+                if (rect.top < viewHeight && rect.bottom > 0) {
+                    const totalTrack = rect.height + viewHeight;
+                    const currentProgress = (viewHeight - rect.top) / totalTrack;
+                    
+                    const targetScale = 1.0 + (currentProgress * 0.12);
+                    const targetPanX = (currentProgress * -15);
+                    const targetPanY = (currentProgress * -10);
+                    
+                    img.style.transform = `scale(${targetScale}) translate(${targetPanX}px, ${targetPanY}px)`;
+                    
+                    const contentFloat = (currentProgress * -30);
+                    content.style.transform = `translateY(${contentFloat}px)`;
+                    content.style.opacity = "1";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
